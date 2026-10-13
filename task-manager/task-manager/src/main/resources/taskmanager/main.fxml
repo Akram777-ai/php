@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.input.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="taskmanager.controller.MainController">
+   <top>
+      <VBox>
+         <children>
+            <MenuBar>
+               <menus>
+                  <Menu text="Файл">
+                     <items>
+                        <MenuItem onAction="#onSave" text="Сохранить">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                        <SeparatorMenuItem />
+                        <MenuItem onAction="#onExit" text="Выход">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="Q" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                     </items>
+                  </Menu>
+                  <Menu text="Правка">
+                     <items>
+                        <MenuItem onAction="#onAdd" text="Добавить задачу">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                        <MenuItem onAction="#onEdit" text="Изменить задачу">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="E" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                        <MenuItem onAction="#onDelete" text="Удалить задачу">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="D" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                        <SeparatorMenuItem />
+                        <MenuItem onAction="#onDone" text="Отметить выполненной" />
+                     </items>
+                  </Menu>
+                  <Menu text="Справка">
+                     <items>
+                        <MenuItem onAction="#onAbout" text="О программе" />
+                     </items>
+                  </Menu>
+               </menus>
+            </MenuBar>
+            <ToolBar>
+               <items>
+                  <Button onAction="#onAdd" text="Добавить" />
+                  <Button onAction="#onEdit" text="Изменить" />
+                  <Button onAction="#onDelete" text="Удалить" />
+                  <Separator orientation="VERTICAL" />
+                  <Button onAction="#onDone" text="Отметить выполненной" />
+               </items>
+            </ToolBar>
+            <HBox alignment="CENTER_LEFT" spacing="8.0">
+               <padding>
+                  <Insets bottom="8.0" left="10.0" right="10.0" top="8.0" />
+               </padding>
+               <children>
+                  <Label text="Поиск:" />
+                  <TextField fx:id="searchField" prefWidth="240.0" promptText="по названию и описанию" />
+                  <Label text="Статус:" />
+                  <ComboBox fx:id="statusFilter" prefWidth="130.0" />
+                  <Label text="Приоритет:" />
+                  <ComboBox fx:id="priorityFilter" prefWidth="130.0" />
+                  <Button onAction="#onReset" text="Сбросить" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </top>
+   <center>
+      <TableView fx:id="table" BorderPane.alignment="CENTER">
+         <columns>
+            <TableColumn fx:id="colTitle" prefWidth="380.0" text="Название" />
+            <TableColumn fx:id="colPriority" prefWidth="120.0" text="Приоритет" />
+            <TableColumn fx:id="colDue" prefWidth="120.0" text="Срок" />
+            <TableColumn fx:id="colStatus" prefWidth="120.0" text="Статус" />
+         </columns>
+      </TableView>
+   </center>
+   <bottom>
+      <HBox style="-fx-background-color: #eeeeee;" BorderPane.alignment="CENTER">
+         <padding>
+            <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+         </padding>
+         <children>
+            <Label fx:id="statusLabel" text="Готово" />
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>

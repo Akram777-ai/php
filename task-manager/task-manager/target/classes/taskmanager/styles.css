@@ -1,0 +1,7 @@
+/* просроченные задачи подсвечиваются светло-красным */
+.table-row-cell.overdue {
+    -fx-background-color: #ffe3e3;
+}
+.table-row-cell.overdue:selected {
+    -fx-background-color: -fx-selection-bar;
+}
